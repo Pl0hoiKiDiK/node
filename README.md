@@ -59,13 +59,13 @@ Never commit `.env` or real passwords, tokens, and OAuth credentials. `.env.exam
 | `npm run lint` | Run ESLint in all applications |
 | `npm run typecheck` | Check TypeScript in all applications |
 | `npm test` | Run the Core API unit test |
-| `npm run test:e2e --workspace core_microservice` | Run the Core API HTTP test |
+| `npm run test:e2e --workspace core` | Run the Core API HTTP test |
 | `npm run docker:build` | Build the four application images |
 | `npm run docker:up` | Build and start the full container stack |
 | `npm run docker:infra` | Start PostgreSQL, Redis, and RabbitMQ |
 | `npm run docker:down` | Stop the container stack |
 
-Each application has its own setup guide: [Core API](apps/core_microservice/README.md), [auth](apps/auth_microservice/README.md), [notifications](apps/notifications_consumer_microservice/README.md), and [client](apps/client_app/README.md). The `packages/shared` and `packages/types` directories are reserved for reusable code.
+Each application has its own setup guide: [Core API](apps/core/README.md), [auth](apps/auth/README.md), [notifications](apps/notifications/README.md), and [client](apps/client/README.md). The `packages/shared` workspace contains reusable health status values and types; `packages/types` is reserved for future shared types.
 
 ## Git workflow
 

@@ -33,5 +33,5 @@ npm test
 To run the HTTP integration test for this workspace:
 
 ```powershell
-npm run test:e2e --workspace core_microservice
+npm run test:e2e --workspace core
 ```

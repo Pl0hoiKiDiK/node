@@ -34,7 +34,7 @@ services:
   core:
     build:
       context: .
-      dockerfile: apps/core_microservice/Dockerfile
+      dockerfile: apps/core/Dockerfile
     environment:
       PORT: 3001
     ports:
@@ -46,7 +46,7 @@ services:
   auth:
     build:
       context: .
-      dockerfile: apps/auth_microservice/Dockerfile
+      dockerfile: apps/auth/Dockerfile
     environment:
       PORT: 3002
     ports:
@@ -58,7 +58,7 @@ services:
   notifications:
     build:
       context: .
-      dockerfile: apps/notifications_consumer_microservice/Dockerfile
+      dockerfile: apps/notifications/Dockerfile
     environment:
       PORT: 3003
     ports:
@@ -70,7 +70,7 @@ services:
   client:
     build:
       context: .
-      dockerfile: apps/client_app/Dockerfile
+      dockerfile: apps/client/Dockerfile
     environment:
       PORT: 3000
     ports:

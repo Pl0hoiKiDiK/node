@@ -18,5 +18,6 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
-      - run: npm test --workspace core_microservice
-      - run: npm run test:e2e --workspace core_microservice
+      - run: npm run build --workspace @innogram/shared
+      - run: npm test --workspace core
+      - run: npm run test:e2e --workspace core
