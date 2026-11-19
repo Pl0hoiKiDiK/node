@@ -1,0 +1,24 @@
+{
+  "name": "auth",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "npm run build && node dist/main.js",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/main.js",
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@innogram/shared": "0.0.1",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/express": "^5.0.0",
+    "@types/node": "^24.0.0",
+    "eslint": "^10.5.0",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.72.1"
+  }
+}
