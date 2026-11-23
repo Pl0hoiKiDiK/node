@@ -1,0 +1,23 @@
+{
+  "name": "innogram",
+  "private": true,
+  "packageManager": "npm@11.9.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "docker:up": "docker compose up --build -d",
+    "docker:infra": "docker compose up -d postgres redis rabbitmq",
+    "docker:build": "docker compose build",
+    "docker:down": "docker compose down"
+  },
+  "devDependencies": {
+    "turbo": "^2.11.11"
+  }
+}
