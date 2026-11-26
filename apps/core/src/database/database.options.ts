@@ -1,22 +1,12 @@
-import { existsSync, readFileSync } from 'node:fs';
-import { join, resolve } from 'node:path';
-import { parseEnv } from 'node:util';
+import { join } from 'node:path';
 import type { DataSourceOptions } from 'typeorm';
 
-const localEnvFile = resolve(__dirname, '../../../../.env');
-
 export function getDatabaseOptions(): DataSourceOptions {
-  const localEnv = existsSync(localEnvFile)
-    ? parseEnv(readFileSync(localEnvFile, 'utf8'))
-    : {};
-  const value = (name: string): string | undefined =>
-    process.env[name] ?? localEnv[name];
-
-  const databaseUrl = value('DATABASE_URL');
-  const username = value('POSTGRES_USER');
-  const password = value('POSTGRES_PASSWORD');
-  const database = value('POSTGRES_DB');
-  const port = Number(value('POSTGRES_PORT') ?? 5432);
+  const databaseUrl = process.env.DATABASE_URL;
+  const username = process.env.POSTGRES_USER;
+  const password = process.env.POSTGRES_PASSWORD;
+  const database = process.env.POSTGRES_DB;
+  const port = Number(process.env.POSTGRES_PORT ?? 5432);
 
   if (!databaseUrl && (!username || !password || !database)) {
     throw new Error(
@@ -32,7 +22,7 @@ export function getDatabaseOptions(): DataSourceOptions {
     ...(databaseUrl
       ? { url: databaseUrl }
       : {
-          host: value('POSTGRES_HOST') ?? 'localhost',
+          host: process.env.POSTGRES_HOST ?? 'localhost',
           port,
           username,
           password,

@@ -24,7 +24,7 @@ npm run migration:run --workspace core
 npm run dev --workspace core
 ```
 
-Copy the example only if you do not already have a local `.env`; keep your existing credentials otherwise. Core reads `DATABASE_URL` when present, otherwise `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`, `POSTGRES_HOST`, and `POSTGRES_PORT`. Missing values are loaded from the root `.env`. In a container, Compose sets the host to `postgres`. The default Core port is 3001; set `$env:PORT` in PowerShell to change the local app port. `CORE_PORT` changes only the published Docker port.
+Copy the example only if you do not already have a local `.env`; keep your existing credentials otherwise. The NestJS app loads the root `.env` through `@nestjs/config`, and migration scripts load it through Node's `--env-file-if-exists` flag. Both use process environment values in preference to values in the file. Core reads `DATABASE_URL` when present, otherwise `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`, `POSTGRES_HOST`, and `POSTGRES_PORT`. In a container, Compose sets the host to `postgres`. The default Core port is 3001; set `$env:PORT` in PowerShell to change the local app port. `CORE_PORT` changes only the published Docker port.
 
 Run migrations again after adding new migration files. TypeORM records applied migrations in PostgreSQL and skips them on subsequent runs. `npm run migration:show --workspace core` lists their status. `npm run migration:revert --workspace core` reverts the latest migration; use it only when you intend to undo that database change.
 

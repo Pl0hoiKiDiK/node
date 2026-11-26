@@ -29,7 +29,7 @@ npm run dev
 
 Open `http://localhost:3000` for the client. The Core API, auth service, and notifications service expose `/health` on ports 3001, 3002, and 3003 respectively. Each returns `{"status":"ok"}`.
 
-To build and run all applications and infrastructure in containers instead, use `npm run docker:up`, then `docker compose exec core npm run migration:run --workspace core`. Stop the containers with `npm run docker:down`. The `.env` file supplies local Compose settings and is ignored by Git. Replace the placeholder passwords before using the stack outside a local development machine. Core reads `DATABASE_URL` or the `POSTGRES_*` values from this file when they are not already set in the process environment; the other application scaffolds still use only their process environment.
+To build and run all applications and infrastructure in containers instead, use `npm run docker:up`, then `docker compose exec core npm run migration:run --workspace core`. Stop the containers with `npm run docker:down`. The `.env` file supplies local Compose settings and is ignored by Git. Replace the placeholder passwords before using the stack outside a local development machine. Core loads the root `.env` through `@nestjs/config` when starting the app and through Node's `--env-file-if-exists` flag for migration commands. Process environment variables take precedence over file values; the other application scaffolds still use only their process environment.
 
 ## Environment variables
 
